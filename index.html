@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow - Gerenciador de Tarefas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>TaskFlow</h1>
+    <nav>
+      <a href="#painel" class="ativo" >Painel</a>
+      <a href="#nova" class="inativo" >Nova tarefa</a>
+      <a href="#tarefas" class="inativo" >Tarefas</a>
+    </nav>
+  </header>
+
+  <div id="mensagem" class="msg oculto"></div>
+
+  <main>
+    <section id="painel">
+      <h2>Painel</h2>
+      <div class="cards">
+        <div class="card"><span>Total de tarefas</span><strong id="card-total">0</strong></div>
+        <div class="card"><span>Concluídas</span><strong id="card-concluidas">0</strong></div>
+        <div class="card"><span>Pendentes</span><strong id="card-pendentes">0</strong></div>
+        <div class="card"><span>Atrasadas</span><strong id="card-atrasadas">0</strong></div>
+        <div class="card"><span>% concluído</span><strong id="card-percentual">0%</strong></div>
+      </div>
+    </section>
+
+    <section id="nova">
+      <h2 id="titulo-form">Nova tarefa</h2>
+      <form id="form-tarefa" class="grade" novalidate>
+              <label class="largo">Título <abbr title="Máx 25 caracteres">?</abbr>
+          <input type="text" id="titulo" maxlength="25" placeholder="Ex.: Revisar relatório">
+        </label>
+        <label class="largo">Descrição
+          <textarea id="descricao" rows="2" placeholder="Detalhes da tarefa (opcional)"></textarea>
+        </label>
+        <label>Prioridade
+          <select id="prioridade">
+            <option value="">Selecione</option>
+            <option value="alta">Alta</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+          </select>
+        </label>
+        <label>Prazo
+          <input type="date" id="prazo">
+        </label>
+        <label>Status
+          <select id="status">
+            <option value="pendente">Pendente</option>
+            <option value="andamento">Em andamento</option>
+            <option value="concluida">Concluída</option>
+          </select>
+        </label>
+        <div class="largo">
+          <button type="submit" class="btn" id="btn-salvar">Cadastrar</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="tarefas">
+      <h2>Tarefas</h2>
+      <p id="resumo" class="resumo"></p>
+      <form class="filtros">
+        <input type="text" id="busca" placeholder="Pesquisar por título ou descrição">
+        <select id="filtro-status">
+          <option value="todos">Todos os status</option>
+          <option value="pendente">Pendente</option>
+          <option value="andamento">Em andamento</option>
+          <option value="concluida">Concluída</option>
+        </select>
+        <select id="filtro-prioridade">
+          <option value="todas">Todas as prioridades</option>
+          <option value="alta">Alta</option>
+          <option value="media">Média</option>
+          <option value="baixa">Baixa</option>
+        </select>
+      </form>
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr><th>Tarefa</th><th>Prioridade</th><th>Status</th><th>Prazo</th><th>Ações</th></tr>
+          </thead>
+          <tbody id="lista"></tbody>
+        </table>
+      </div>
+      <p id="vazio" class="vazio oculto">Nenhuma tarefa cadastrada.</p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <a href="dicas-qa.html">Dicas para o time de QA</a>
+    <a href="dicas-dev.html">Dicas para o time de desenvolvimento</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
